@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -23,7 +25,7 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem 'brakeman', require: false
   # Rspec gem used for specs generation
-  gem 'rspec-rails', '~> 4.0.1'
+  gem 'rspec-rails', '~> 7.1', '>= 7.1.1'
   # linter
   gem 'rubocop-rails', '~> 2.29', '>= 2.29.1'
   gem 'rubocop-rspec', '~> 3.4'
@@ -32,14 +34,14 @@ group :development, :test do
   # use rspec for unit and integration tests
   gem 'factory_bot_rails', '~> 5.2.0'
   # use faker to generate model factories
-  gem 'faker', '~> 2.12.0'
+  gem 'faker', '~> 3.4', '>= 3.4.2'
 end
 
 group :test do
   # use shoulda-matchers to enforce unit test within models
-  gem 'shoulda-matchers', '~> 4.3.0'
+  gem 'shoulda-matchers', '~> 6.4'
   # use pundit-matchers to enforce unit test within policies
-  gem 'pundit-matchers', '~> 1.6.0'
+  # gem 'pundit-matchers', '~> 1.6.0'
   # use database_cleaner to truncate the contents of the database in every
   # example run
   gem 'database_cleaner', '~> 1.8.5'

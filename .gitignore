@@ -33,3 +33,6 @@
 
 # visual code
 .vscode/*
+
+coverage
+dump.rdb

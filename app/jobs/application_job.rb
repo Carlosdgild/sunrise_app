@@ -2,8 +2,8 @@
 
 # Main Application Job class wrapper
 #
-class ApplicationJob
-  include Sidekiq::Worker
+class ApplicationJob < ActiveJob::Base
+  # include Sidekiq::Worker
 
   # sidekiq_options queue: :mailers
   # sidekiq_throttle_as :xyz_api

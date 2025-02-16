@@ -20,6 +20,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'sidekiq', '~> 7.3', '>= 7.3.9'
 # external api integrations
 gem 'rest-client', '~> 2.1.0'
+# Serialization
+gem 'active_model_serializers', '~> 0.10.6'
 
 group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]

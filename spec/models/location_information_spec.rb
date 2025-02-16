@@ -6,7 +6,6 @@ RSpec.describe LocationInformation, type: :model do
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:start_date) }
-    it { is_expected.to validate_presence_of(:end_date) }
+    it { is_expected.to validate_presence_of(:information_date) }
   end
 end

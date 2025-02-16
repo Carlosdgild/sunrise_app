@@ -16,8 +16,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_15_213607) do
 
   create_table "location_informations", force: :cascade do |t|
     t.bigint "location_id"
-    t.date "start_date", null: false
-    t.date "end_date", null: false
+    t.date "information_date", null: false
     t.time "sunrise"
     t.time "sunset"
     t.time "first_light"
@@ -29,7 +28,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_15_213607) do
     t.time "day_length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["location_id", "start_date", "end_date"], name: "location_and_dates_index", unique: true
+    t.index ["location_id", "information_date"], name: "location_and_information_date_index", unique: true
     t.index ["location_id"], name: "index_location_informations_on_location_id"
   end
 

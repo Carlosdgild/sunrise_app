@@ -35,7 +35,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
+Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -44,6 +44,41 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
+# disable HTTP connections
+WebMock.disable_net_connect!
+
+# VCR config
+VCR.configure do |config|
+  is_runner = ENV.fetch('GITLAB_CI_RUNNER', 'false') == 'true'
+  config.default_cassette_options.merge!(record: :none) if is_runner
+
+  config.cassette_library_dir = 'spec/vcr_cassettes'
+  config.hook_into :webmock
+
+  # openstreetmap
+  config.register_request_matcher :openstreetmap do |real_request, recorded_request|
+    url_regex = /^https:\/\/nominatim\.openstreetmap\.org\/search\?q=.*&format=json$/
+    result = (real_request.uri == recorded_request.uri) ||
+             (
+               url_regex.match(real_request.uri) &&
+               url_regex.match(recorded_request.uri)
+             )
+    result
+  end
+
+  # sunrisesunset
+  config.register_request_matcher :sunrisesunset do |real_request, recorded_request|
+    url_regex = /^https:\/\/api\.sunrisesunset\.io\/json\?lat=[\d.-]+&lng=[\d.-]+&date_start=\d{4}-\d{2}-\d{2}&date_end=\d{4}-\d{2}-\d{2}$/
+    result = (real_request.uri == recorded_request.uri) ||
+             (
+               url_regex.match(real_request.uri) &&
+               url_regex.match(recorded_request.uri)
+             )
+    result
+  end
+end
+
 RSpec.configure do |config|
   # rails 6 requires to explicitly set job queue
   config.before :example, :perform_enqueued do
@@ -98,8 +133,10 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  Shoulda::Matchers.configure do |config|
-    config.integrate do |with|
+  # include RequestSpecHelper
+  config.include RequestSpecHelper
+  Shoulda::Matchers.configure do |configu|
+    configu.integrate do |with|
       with.test_framework :rspec
       with.library :rails
     end

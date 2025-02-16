@@ -22,8 +22,8 @@ RSpec.describe Location, type: :model do
                                                longitude: -9.13333)
         expect do
           another_location.save!
-        end.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: '\
-        'Name has already been taken')
+        end.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: ' \
+                                                        'Name has already been taken')
         expect(another_location.errors.messages).to have_key(:name)
       end
     end

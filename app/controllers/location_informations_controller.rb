@@ -53,7 +53,7 @@ class LocationInformationsController < ApplicationController
   def validate_dates!
     start_date = Date.parse(@start_date)
     end_date = Date.parse(@end_date)
-    return if end_date > start_date && (end_date - start_date).to_i <= 365
+    return if end_date >= start_date && (end_date - start_date).to_i <= 365
 
     raise ArgumentError.new('Dates are wrong')
   end

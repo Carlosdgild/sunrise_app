@@ -123,4 +123,71 @@ describe RetrieveLocationInformationService, type: :service do
       end
     end
   end
+
+  context 'when doing request to sunrisesunset api fails' do
+    it 'raises error but persist the location', :perform_enqueued do
+      results = nil
+      # destroying locations to ensure that one will be created
+      Location.destroy_all
+      result_with_error = [{ 'date' => '2024-01-01',
+                             'sunrise' => '7:55:35 AM',
+                             'sunset' => '5:25:21 PM',
+                             'first_light' => '6:20:11 AM',
+                             'last_light' => '7:00:45 PM',
+                             'dawn' => '7:25:49 AM',
+                             'dusk' => '5:55:08 PM',
+                             'solar_noon' => '12:40:28 PM',
+                             'golden_hour' => '4:43:40 PM',
+                             'day_length' => '9:29:45',
+                             'timezone' => 'Europe/Lisbon',
+                             'utc_offset' => 0 },
+                           { error: 'error' }]
+      allow(SunriseSunsetApiClient)
+        .to receive(:fetch_information_for_location)
+        .and_return(result_with_error)
+      expect(CoordinateApiClient)
+        .to receive(:fetch_coordinates)
+        .and_call_original
+      expect do
+        VCR.use_cassette('lisbon_coordinates',
+                         match_requests_on: [:openstreetmap]) do
+          VCR.use_cassette('lisbon_days_information',
+                           match_requests_on: [:sunrisesunset]) do
+            results = described_class.call!(lisbon_name, nil, longitude, start_date, end_date)
+          end
+        end
+      end.to raise_error(CustomStandardError)
+      expect(results).to be_nil
+      expect(Location.count).to eq(1)
+      # Zero since it raises error fetching data
+      expect(LocationInformation.count).to eq(0)
+    end
+  end
+
+  context 'when doing request to openstreetmap api fails' do
+    it 'raises error but anything persist at database', :perform_enqueued do
+      results = nil
+      # destroying locations to ensure that none will be created
+      Location.destroy_all
+      allow(SunriseSunsetApiClient)
+        .to receive(:fetch_information_for_location)
+        .and_call_original
+      allow(CoordinateApiClient)
+        .to receive(:fetch_coordinates)
+        .and_return(%w[anything error])
+      expect do
+        VCR.use_cassette('lisbon_coordinates',
+                         match_requests_on: [:openstreetmap]) do
+          VCR.use_cassette('lisbon_days_information',
+                           match_requests_on: [:sunrisesunset]) do
+            results = described_class.call!(lisbon_name, nil, longitude, start_date, end_date)
+          end
+        end
+      end.to raise_error(CustomStandardError)
+      expect(results).to be_nil
+      # Zero since it raises error fetching data
+      expect(Location.count).to eq(0)
+      expect(LocationInformation.count).to eq(0)
+    end
+  end
 end

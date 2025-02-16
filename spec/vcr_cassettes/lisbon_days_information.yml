@@ -1,0 +1,153 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.sunrisesunset.io/json?date_end=2024-01-31&date_start=2024-01-01&lat=38.7077507&lng=-9.1365919
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - rest-client/2.1.0 (linux x86_64) ruby/3.3.0p0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.sunrisesunset.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 16 Feb 2025 00:32:32 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - public, max-age=3600
+      Expires:
+      - Sun, 16 Feb 2025 01:32:00 GMT
+      X-Robots-Tag:
+      - noindex
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=26B4NpkGzJZ56dY03bOHfhzBfP%2BfqvdG%2Bmu%2BdSkEaJUvwGgfN9w95dLQHC6ubrMnaAo8DhxGNHpmU29DxvTswEHmaMS1RKmScAEG047P32myOF6N06Q897zj1w3X4TUDKpf4ijSI"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=15552000
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 912970e92d49e3b4-LIS
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Server-Timing:
+      - cfL4;desc="?proto=TCP&rtt=23897&min_rtt=17883&rtt_var=18735&sent=6&recv=8&lost=0&retrans=1&sent_bytes=4164&recv_bytes=910&delivery_rate=44118&cwnd=251&unsent_bytes=0&cid=7057001474ba1fa9&ts=189&x=0"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"results":[{"date":"2024-01-01","sunrise":"7:55:35 AM","sunset":"5:25:21
+        PM","first_light":"6:20:11 AM","last_light":"7:00:45 PM","dawn":"7:25:49 AM","dusk":"5:55:08
+        PM","solar_noon":"12:40:28 PM","golden_hour":"4:43:40 PM","day_length":"9:29:45","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-02","sunrise":"7:55:46
+        AM","sunset":"5:26:06 PM","first_light":"6:20:25 AM","last_light":"7:01:27
+        PM","dawn":"7:26:00 AM","dusk":"5:55:51 PM","solar_noon":"12:40:56 PM","golden_hour":"4:44:28
+        PM","day_length":"9:30:20","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-03","sunrise":"7:55:54
+        AM","sunset":"5:26:53 PM","first_light":"6:20:38 AM","last_light":"7:02:09
+        PM","dawn":"7:26:10 AM","dusk":"5:56:37 PM","solar_noon":"12:41:24 PM","golden_hour":"4:45:19
+        PM","day_length":"9:30:59","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-04","sunrise":"7:56:00
+        AM","sunset":"5:27:42 PM","first_light":"6:20:49 AM","last_light":"7:02:53
+        PM","dawn":"7:26:18 AM","dusk":"5:57:23 PM","solar_noon":"12:41:51 PM","golden_hour":"4:46:11
+        PM","day_length":"9:31:41","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-05","sunrise":"7:56:04
+        AM","sunset":"5:28:32 PM","first_light":"6:20:58 AM","last_light":"7:03:38
+        PM","dawn":"7:26:25 AM","dusk":"5:58:11 PM","solar_noon":"12:42:18 PM","golden_hour":"4:47:04
+        PM","day_length":"9:32:27","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-06","sunrise":"7:56:06
+        AM","sunset":"5:29:23 PM","first_light":"6:21:06 AM","last_light":"7:04:24
+        PM","dawn":"7:26:29 AM","dusk":"5:59:00 PM","solar_noon":"12:42:45 PM","golden_hour":"4:48:00
+        PM","day_length":"9:33:16","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-07","sunrise":"7:56:06
+        AM","sunset":"5:30:16 PM","first_light":"6:21:11 AM","last_light":"7:05:11
+        PM","dawn":"7:26:31 AM","dusk":"5:59:51 PM","solar_noon":"12:43:11 PM","golden_hour":"4:48:57
+        PM","day_length":"9:34:09","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-08","sunrise":"7:56:04
+        AM","sunset":"5:31:10 PM","first_light":"6:21:15 AM","last_light":"7:05:58
+        PM","dawn":"7:26:31 AM","dusk":"6:00:42 PM","solar_noon":"12:43:37 PM","golden_hour":"4:49:55
+        PM","day_length":"9:35:05","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-09","sunrise":"7:56:00
+        AM","sunset":"5:32:05 PM","first_light":"6:21:18 AM","last_light":"7:06:47
+        PM","dawn":"7:26:30 AM","dusk":"6:01:35 PM","solar_noon":"12:44:02 PM","golden_hour":"4:50:55
+        PM","day_length":"9:36:04","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-10","sunrise":"7:55:54
+        AM","sunset":"5:33:01 PM","first_light":"6:21:18 AM","last_light":"7:07:37
+        PM","dawn":"7:26:26 AM","dusk":"6:02:29 PM","solar_noon":"12:44:28 PM","golden_hour":"4:51:57
+        PM","day_length":"9:37:07","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-11","sunrise":"7:55:45
+        AM","sunset":"5:33:59 PM","first_light":"6:21:17 AM","last_light":"7:08:27
+        PM","dawn":"7:26:21 AM","dusk":"6:03:24 PM","solar_noon":"12:44:52 PM","golden_hour":"4:52:59
+        PM","day_length":"9:38:13","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-12","sunrise":"7:55:35
+        AM","sunset":"5:34:58 PM","first_light":"6:21:14 AM","last_light":"7:09:19
+        PM","dawn":"7:26:13 AM","dusk":"6:04:19 PM","solar_noon":"12:45:16 PM","golden_hour":"4:54:03
+        PM","day_length":"9:39:22","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-13","sunrise":"7:55:23
+        AM","sunset":"5:35:57 PM","first_light":"6:21:09 AM","last_light":"7:10:11
+        PM","dawn":"7:26:04 AM","dusk":"6:05:16 PM","solar_noon":"12:45:40 PM","golden_hour":"4:55:09
+        PM","day_length":"9:40:34","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-14","sunrise":"7:55:08
+        AM","sunset":"5:36:58 PM","first_light":"6:21:02 AM","last_light":"7:11:04
+        PM","dawn":"7:25:52 AM","dusk":"6:06:14 PM","solar_noon":"12:46:03 PM","golden_hour":"4:56:15
+        PM","day_length":"9:41:49","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-15","sunrise":"7:54:51
+        AM","sunset":"5:38:00 PM","first_light":"6:20:54 AM","last_light":"7:11:57
+        PM","dawn":"7:25:39 AM","dusk":"6:07:12 PM","solar_noon":"12:46:26 PM","golden_hour":"4:57:23
+        PM","day_length":"9:43:08","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-16","sunrise":"7:54:33
+        AM","sunset":"5:39:02 PM","first_light":"6:20:43 AM","last_light":"7:12:52
+        PM","dawn":"7:25:24 AM","dusk":"6:08:11 PM","solar_noon":"12:46:48 PM","golden_hour":"4:58:31
+        PM","day_length":"9:44:29","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-17","sunrise":"7:54:12
+        AM","sunset":"5:40:05 PM","first_light":"6:20:31 AM","last_light":"7:13:46
+        PM","dawn":"7:25:06 AM","dusk":"6:09:11 PM","solar_noon":"12:47:09 PM","golden_hour":"4:59:41
+        PM","day_length":"9:45:53","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-18","sunrise":"7:53:50
+        AM","sunset":"5:41:10 PM","first_light":"6:20:17 AM","last_light":"7:14:42
+        PM","dawn":"7:24:47 AM","dusk":"6:10:12 PM","solar_noon":"12:47:30 PM","golden_hour":"5:00:51
+        PM","day_length":"9:47:19","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-19","sunrise":"7:53:25
+        AM","sunset":"5:42:14 PM","first_light":"6:20:02 AM","last_light":"7:15:38
+        PM","dawn":"7:24:26 AM","dusk":"6:11:13 PM","solar_noon":"12:47:50 PM","golden_hour":"5:02:03
+        PM","day_length":"9:48:49","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-20","sunrise":"7:52:59
+        AM","sunset":"5:43:20 PM","first_light":"6:19:44 AM","last_light":"7:16:34
+        PM","dawn":"7:24:03 AM","dusk":"6:12:15 PM","solar_noon":"12:48:09 PM","golden_hour":"5:03:15
+        PM","day_length":"9:50:21","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-21","sunrise":"7:52:30
+        AM","sunset":"5:44:26 PM","first_light":"6:19:24 AM","last_light":"7:17:32
+        PM","dawn":"7:23:38 AM","dusk":"6:13:18 PM","solar_noon":"12:48:28 PM","golden_hour":"5:04:27
+        PM","day_length":"9:51:56","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-22","sunrise":"7:52:00
+        AM","sunset":"5:45:33 PM","first_light":"6:19:03 AM","last_light":"7:18:29
+        PM","dawn":"7:23:11 AM","dusk":"6:14:21 PM","solar_noon":"12:48:46 PM","golden_hour":"5:05:41
+        PM","day_length":"9:53:33","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-23","sunrise":"7:51:27
+        AM","sunset":"5:46:40 PM","first_light":"6:18:40 AM","last_light":"7:19:27
+        PM","dawn":"7:22:43 AM","dusk":"6:15:24 PM","solar_noon":"12:49:04 PM","golden_hour":"5:06:55
+        PM","day_length":"9:55:12","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-24","sunrise":"7:50:53
+        AM","sunset":"5:47:48 PM","first_light":"6:18:15 AM","last_light":"7:20:25
+        PM","dawn":"7:22:12 AM","dusk":"6:16:28 PM","solar_noon":"12:49:20 PM","golden_hour":"5:08:10
+        PM","day_length":"9:56:54","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-25","sunrise":"7:50:17
+        AM","sunset":"5:48:56 PM","first_light":"6:17:48 AM","last_light":"7:21:24
+        PM","dawn":"7:21:40 AM","dusk":"6:17:33 PM","solar_noon":"12:49:36 PM","golden_hour":"5:09:25
+        PM","day_length":"9:58:39","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-26","sunrise":"7:49:39
+        AM","sunset":"5:50:04 PM","first_light":"6:17:20 AM","last_light":"7:22:23
+        PM","dawn":"7:21:06 AM","dusk":"6:18:37 PM","solar_noon":"12:49:51 PM","golden_hour":"5:10:40
+        PM","day_length":"10:00:25","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-27","sunrise":"7:48:59
+        AM","sunset":"5:51:13 PM","first_light":"6:16:49 AM","last_light":"7:23:23
+        PM","dawn":"7:20:30 AM","dusk":"6:19:42 PM","solar_noon":"12:50:06 PM","golden_hour":"5:11:56
+        PM","day_length":"10:02:14","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-28","sunrise":"7:48:17
+        AM","sunset":"5:52:22 PM","first_light":"6:16:17 AM","last_light":"7:24:22
+        PM","dawn":"7:19:52 AM","dusk":"6:20:48 PM","solar_noon":"12:50:20 PM","golden_hour":"5:13:12
+        PM","day_length":"10:04:05","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-29","sunrise":"7:47:34
+        AM","sunset":"5:53:32 PM","first_light":"6:15:43 AM","last_light":"7:25:22
+        PM","dawn":"7:19:12 AM","dusk":"6:21:53 PM","solar_noon":"12:50:33 PM","golden_hour":"5:14:29
+        PM","day_length":"10:05:57","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-30","sunrise":"7:46:48
+        AM","sunset":"5:54:41 PM","first_light":"6:15:07 AM","last_light":"7:26:22
+        PM","dawn":"7:18:31 AM","dusk":"6:22:59 PM","solar_noon":"12:50:45 PM","golden_hour":"5:15:46
+        PM","day_length":"10:07:52","timezone":"Europe/Lisbon","utc_offset":0},{"date":"2024-01-31","sunrise":"7:46:01
+        AM","sunset":"5:55:51 PM","first_light":"6:14:30 AM","last_light":"7:27:23
+        PM","dawn":"7:17:48 AM","dusk":"6:24:05 PM","solar_noon":"12:50:56 PM","golden_hour":"5:17:02
+        PM","day_length":"10:09:49","timezone":"Europe/Lisbon","utc_offset":0}],"status":"OK"}'
+  recorded_at: Sun, 16 Feb 2025 00:32:32 GMT
+recorded_with: VCR 6.0.0

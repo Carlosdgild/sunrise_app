@@ -12,7 +12,9 @@ class LocationCoordinatesService < ApplicationService
       )
     end
 
-    Location.create_location_record(location_name, coordinates[:latitude], coordinates[:longitude])
+    Location.create_location_record_with_coordinates!(
+      location_name, coordinates[:latitude], coordinates[:longitude]
+    )
   end
 
   private

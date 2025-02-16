@@ -46,7 +46,7 @@ describe CreateLocationInformationJob, type: :job do
       end
     end
 
-    context 'where there is an error when creating LocationInformation' do
+    context 'when there is an error when creating LocationInformation' do
       before do
         allow(LocationInformation).to receive(:create!).and_raise(ActiveRecord::RecordInvalid)
       end

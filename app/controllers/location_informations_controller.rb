@@ -28,8 +28,8 @@ class LocationInformationsController < ApplicationController
   # @returns nil
   def information_range_params
     @location_name = params.require(:location_name)
-    @latitude = params.permit(:latitude)
-    @longitude = params.permit(:longitude)
+    @latitude = params.permit(:latitude)[:latitude]
+    @longitude = params.permit(:longitude)[:longitude]
     @start_date = params.require(:start_date)
     @end_date = params.require(:end_date)
   end

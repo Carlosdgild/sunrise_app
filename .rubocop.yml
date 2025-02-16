@@ -664,7 +664,8 @@ Rails/WhereNotWithMultipleConditions:
   Enabled: true
 Rails/WhereRange:
   Enabled: true
-
+RSpec/MultipleMemoizedHelpers:
+  Max: 8
 # explicitly disabled unique indexes
 Rails/UniqueValidationWithoutIndex:
   Enabled: false

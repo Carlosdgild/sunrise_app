@@ -5,6 +5,7 @@ class LocationInformationsController < ApplicationController
   before_action :information_range_params, only: %i[information_range]
   before_action :format_dates, only: %i[information_range]
   before_action :validate_dates!, only: %i[information_range]
+
   # Endpoint without authentication to retrieve data from a place within dates
   # @example
   # [{"information_date"=>"2024-01-01", "sunrise"=>"7:55:35 AM",
@@ -55,6 +56,6 @@ class LocationInformationsController < ApplicationController
     end_date = Date.parse(@end_date)
     return if end_date >= start_date && (end_date - start_date).to_i <= 365
 
-    raise ArgumentError.new('Dates are wrong')
+    raise ArgumentError.new('Dates are wrong or selected more than a year between them')
   end
 end

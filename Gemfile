@@ -22,6 +22,8 @@ gem 'sidekiq', '~> 7.3', '>= 7.3.9'
 gem 'rest-client', '~> 2.1.0'
 # Serialization
 gem 'active_model_serializers', '~> 0.10.6'
+# CORS
+gem 'rack-cors', '~> 2.0', '>= 2.0.2'
 
 group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]

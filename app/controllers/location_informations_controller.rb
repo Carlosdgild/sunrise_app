@@ -7,20 +7,25 @@ class LocationInformationsController < ApplicationController
   before_action :validate_dates!, only: %i[information_range]
   # Endpoint without authentication to retrieve data from a place within dates
   # @example
+  # [{"information_date"=>"2024-01-01", "sunrise"=>"7:55:35 AM",
+  #   "sunset"=>"5:25:21 PM", "golden_hour"=>"4:43:40 PM"},
+  #  {"information_date"=>"2024-01-02", "sunrise"=>"7:55:46 AM",
+  #   "sunset"=>"5:26:06 PM", "golden_hour"=>"4:44:28 PM"},
+  #  {"information_date"=>"2024-01-03", "sunrise"=>"7:55:54 AM",
+  #   "sunset"=>"5:26:53 PM", "golden_hour"=>"4:45:19 PM"},
+  #  {"information_date"=>"2024-01-04", "sunrise"=>"7:56:00 AM",
+  #   "sunset"=>"5:27:42 PM", "golden_hour"=>"4:46:11 PM"}]
   def information_range
     results = RetrieveLocationInformationService.call!(
       @location_name, @latitude, @longitude, @start_date, @end_date
     )
-    # if results.is_a?(Hash)
     render json: results
-    # else
-    # render json: results, each_serializer: LocationInformationSerializer
-    # end
   end
 
   private
 
   # Method that retrieves and checks for the required params
+  # @returns nil
   def information_range_params
     @location_name = params.require(:location_name)
     @latitude = params.permit(:latitude)
@@ -29,14 +34,22 @@ class LocationInformationsController < ApplicationController
     @end_date = params.require(:end_date)
   end
 
+  # Format the given dates to YYYY-mm-dd format
+  # @returns nil
   def format_dates
     yyyy_mm_dd_pattern = /^\d{4}-\d{2}-\d{2}$/
-    return if @start_date.match?(yyyy_mm_dd_pattern) && @end_date.match?(yyyy_mm_dd_pattern)
+    unless @start_date.match?(yyyy_mm_dd_pattern)
+      @start_date = Date.strptime(@start_date, '%d-%m-%Y').strftime('%Y-%m-%d')
+    end
+    return if @end_date.match?(yyyy_mm_dd_pattern)
 
-    @start_date = Date.strptime(@start_date, '%d-%m-%Y').strftime('%Y-%m-%d')
     @end_date = Date.strptime(@end_date, '%d-%m-%Y').strftime('%Y-%m-%d')
   end
 
+  # Validates if end_date is after start_date, and the diff between them is
+  # lesser than 365 days
+  # @returns nil
+  # @raises ArgumentError
   def validate_dates!
     start_date = Date.parse(@start_date)
     end_date = Date.parse(@end_date)

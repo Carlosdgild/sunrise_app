@@ -64,8 +64,8 @@ class RetrieveLocationInformationService < ApplicationService
   # @returns Array
   def serialize_results(results)
     results.map do |day|
-      IMPORTANT_KEYS.each_with_object({}) do |key, result|
-        result[key] = day[KEY_MAPPING[key]]
+      IMPORTANT_KEYS.index_with do |key|
+        day[KEY_MAPPING[key]]
       end
     end
   end

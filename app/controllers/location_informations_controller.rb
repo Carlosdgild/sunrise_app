@@ -39,12 +39,22 @@ class LocationInformationsController < ApplicationController
   # @returns nil
   def format_dates
     yyyy_mm_dd_pattern = /^\d{4}-\d{2}-\d{2}$/
-    unless @start_date.match?(yyyy_mm_dd_pattern)
-      @start_date = Date.strptime(@start_date, '%d-%m-%Y').strftime('%Y-%m-%d')
-    end
-    return if @end_date.match?(yyyy_mm_dd_pattern)
 
-    @end_date = Date.strptime(@end_date, '%d-%m-%Y').strftime('%Y-%m-%d')
+    @start_date = format_date(@start_date, yyyy_mm_dd_pattern)
+    @end_date = format_date(@end_date, yyyy_mm_dd_pattern)
+  end
+
+  # Formats the given date to YYYY-mm-dd format
+  # @returns Date
+  # @raises ActionController::BadRequest
+  def format_date(date, pattern)
+    return date if date.match?(pattern)
+
+    begin
+      Date.parse(date).strftime('%Y-%m-%d')
+    rescue ArgumentError
+      raise ActionController::BadRequest.new('Invalid date format')
+    end
   end
 
   # Validates if end_date is after start_date, and the diff between them is

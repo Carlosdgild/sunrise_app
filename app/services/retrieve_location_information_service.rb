@@ -23,7 +23,7 @@ class RetrieveLocationInformationService < ApplicationService
       raise CustomStandardError.new('An error has occured while getting information')
     end
 
-    CreateLocationInformationJob.perform_later(location.id, results)
+    CreateLocationInformationJob.perform_later(location.id, results, start_date, end_date)
     serialize_results(results)
   end
 

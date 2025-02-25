@@ -4,10 +4,12 @@
 class CreateLocationInformationJob < ApplicationJob
   queue_as :default
 
-  def perform(location_id, results)
+  def perform(location_id, results, start_date = nil, end_date = nil)
     Location.find(location_id)
-    existing_dates =
-      LocationInformation.where(location_id: location_id).pluck(:information_date).to_set
+    query = LocationInformation.where(location_id: location_id)
+    query = query.where(information_date: start_date..end_date) if start_date && end_date
+    existing_dates = query.pluck(:information_date).to_set
+
     results.each do |result|
       next if existing_dates.include?(result['date'].to_date)
 

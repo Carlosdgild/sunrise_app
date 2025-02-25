@@ -84,8 +84,8 @@ class RetrieveLocationInformationService < ApplicationService
   end
 
   def validate_dates!
-    start_date = Date.parse(@start_date)
-    end_date = Date.parse(@end_date)
+    start_date = @start_date.is_a?(Date) ? @start_date : Date.parse(@start_date)
+    end_date = @end_date.is_a?(Date) ? @end_date : Date.parse(@end_date)
     @diff_between_date = (end_date - start_date).to_i + 1
     return if diff_between_date <= 365 && diff_between_date >= 0
 
